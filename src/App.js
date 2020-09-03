@@ -40,7 +40,7 @@ class App extends React.Component {
     this.state = {
       input: '',
       imgUrl: '',
-      box: {},
+      box: [],
       route: 'signin',
       isSignedIn: false,
       user: {
@@ -66,18 +66,26 @@ class App extends React.Component {
   }
 
   calcFaceLocation = (data) => {
-    const clarFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('target');
     const width = Number(image.width);
     const height = Number(image.height);
+    const clarFace = data.outputs[0].data.regions.map((bbObject) => {
+      return {
+        leftCol: bbObject.region_info.bounding_box.left_col * width,
+        topRow: bbObject.region_info.bounding_box.top_row * height,
+        rightCol: width - (bbObject.region_info.bounding_box.right_col * width),
+        bottomRow: height - (bbObject.region_info.bounding_box.bottom_row * height)
+      }
+    });
     // console.log(width, height);
     // console.log(clarFace);
-    return {
-      leftCol: clarFace.left_col * width,
-      topRow: clarFace.top_row * height,
-      rightCol: width - (clarFace.right_col * width),
-      bottomRow: height - (clarFace.bottom_row * height),
-    }
+    // return {
+    //   leftCol: clarFace.left_col * width,
+    //   topRow: clarFace.top_row * height,
+    //   rightCol: width - (clarFace.right_col * width),
+    //   bottomRow: height - (clarFace.bottom_row * height),
+    // }
+    return clarFace;
   }
 
   displayFaceBox = (box) => {
@@ -96,7 +104,7 @@ class App extends React.Component {
         Clarifai.FACE_DETECT_MODEL, 
         this.state.input)
       .then(response => {
-        console.log(response.outputs[0].data.regions);
+        // console.log(response.outputs[0].data.regions);
         if(response) {
           fetch('http://localhost:3000/image', {
             method: 'PUT',
