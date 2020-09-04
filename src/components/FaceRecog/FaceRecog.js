@@ -1,7 +1,7 @@
 import React from 'react';
 import './FaceRecog.css';
 
-const FaceRecog = ({ imgUrl, box }) => {
+const FaceRecog = ({ imgUrl, box, isSignedIn }) => {
   const bbComps = box.map((bBox, i) => {
     return (
       <div
@@ -9,7 +9,7 @@ const FaceRecog = ({ imgUrl, box }) => {
         style={{top: bBox.topRow, right: bBox.rightCol, bottom: bBox.bottomRow, left: bBox.leftCol}}className='bounding_box'>
       </div>
     );
-  })
+  });
 
   return (
     <div className='center ma'>
