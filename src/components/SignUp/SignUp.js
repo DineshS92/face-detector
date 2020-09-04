@@ -28,8 +28,8 @@ class SignUp extends React.Component {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         name: this.state.name,
-        email: this.state.signInEmail,
-        password: this.state.signInPass
+        email: this.state.email,
+        password: this.state.password
       })
     })
       .then(response => response.json())
@@ -79,7 +79,6 @@ class SignUp extends React.Component {
             </fieldset>
             <div className="">
               <input
-
                 onClick={this.onSubmitSignUp} 
                 className="b ph3 pv2 input-reset ba b--black bg-transparent pointer hover-bg-black hover-white f6 dib" 
                 type="button" 
