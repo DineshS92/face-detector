@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6418a790570e438fb73071dac1e2f696",
+    "revision": "20eedfc2ce492bf1e5315453ee7fc02e",
     "url": "/face-detector/index.html"
   },
   {
