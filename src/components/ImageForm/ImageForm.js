@@ -4,7 +4,7 @@ const ImageForm = ({ onInputChange, onButSubmit }) => {
   return (
     <div className='ma5 br3 shadow-2 pa2'>
       <p className='f3 tc fw6'>
-        {'This Brain will Detect Faces in Your Pictures. Enter URL of the Image to Get Started'}
+        {'Detect Faces in Your Pictures. Enter URL of the Image to Get Started'}
       </p>
       <div className='flex flex-wrap mb4'>
         <input className='f4 pa2 w-70 center' type='text' onChange={onInputChange}/>
