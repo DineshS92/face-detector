@@ -8,7 +8,6 @@ import Particles from 'react-particles-js';
 import FaceRecog from './components/FaceRecog/FaceRecog';
 import Signin from './components/Signin/Signin';
 import Signup from './components/SignUp/SignUp';
-import Footer from './components/Footer/Footer';
 
 const particleOpt = {
   particles: {
@@ -151,7 +150,7 @@ class App extends React.Component {
           isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}/>
         {route === 'home'
-        ? <div>
+        ? <div className='h-100'>
             <Rank name={this.state.user.name} entries={this.state.user.entries}/>
             <ImageForm onInputChange={this.onInputChange} onButSubmit={this.onButSubmit}/>
             {image}
@@ -162,7 +161,6 @@ class App extends React.Component {
             : <Signup loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
           )
         }
-        <Footer />
       </div>
     );
   }
