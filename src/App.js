@@ -8,6 +8,7 @@ import Particles from 'react-particles-js';
 import FaceRecog from './components/FaceRecog/FaceRecog';
 import Signin from './components/Signin/Signin';
 import Signup from './components/SignUp/SignUp';
+import Footer from './components/Footer/Footer';
 
 const particleOpt = {
   particles: {
@@ -161,7 +162,7 @@ class App extends React.Component {
             : <Signup loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
           )
         }
-        {/* <FaceRecog box={this.state.box} imgUrl={this.state.imgUrl} /> */}
+        <Footer />
       </div>
     );
   }

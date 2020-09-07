@@ -5,7 +5,8 @@ class Signin extends React.Component {
     super(props);
     this.state = {
       signInEmail: '',
-      signInPass: ''
+      signInPass: '',
+      message: ''
     }
   }
 
@@ -31,6 +32,8 @@ class Signin extends React.Component {
         if(user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange('home');
+        } else {
+          this.setState({message: `Hmmm..Seems like you've got the wrong credentials`})
         }
       })
   }
@@ -74,6 +77,7 @@ class Signin extends React.Component {
                 className="underline f5 link fw5 dim black db pointer">Don't Have an Account? Sign Up for Free</p>
             </div>
           </form>
+          <p className='fw6 ma0 mt2 dark-red'>{this.state.message}</p>
         </main>
       </article>
     );
