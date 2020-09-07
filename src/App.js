@@ -104,20 +104,21 @@ class App extends React.Component {
       })
       .then(response => response.json())
       .then(response => {
-        // console.log(response.outputs[0].data.regions);
-        if(response) {
-          fetch('https://sheltered-beyond-43188.herokuapp.com/image', {
-            method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-              id: this.state.user.id
+        if(response === 'Empty I/P field') {
+          return;
+        } else {
+            fetch('https://sheltered-beyond-43188.herokuapp.com/image', {
+              method: 'PUT',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                id: this.state.user.id
+              })
             })
-          })
-          .then(response => response.json())
-          .then(count => {
-            this.setState(Object.assign(this.state.user, { entries: count }));
-          })
-          .catch(console.log);
+            .then(response => response.json())
+            .then(count => {
+              this.setState(Object.assign(this.state.user, { entries: count }));
+            })
+            .catch(console.log);
         }
         this.displayFaceBox(this.calcFaceLocation(response))
       })
